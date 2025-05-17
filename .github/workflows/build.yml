@@ -1,0 +1,35 @@
+name: Generate last_updated.json on push to develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  generate-timestamp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Git (needed for subprocess in script)
+        run: sudo apt-get update && sudo apt-get install -y git
+
+      - name: Generate last_updated.json
+        run: python app/generate_last_updated.py
+
+      - name: Show contents of last_updated.json
+        run: cat app/data/last_updated.json
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: last_updated
+          path: app/data/last_updated.json
+
