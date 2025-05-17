@@ -5,9 +5,14 @@ description = "Página web sobre la elección del poder judicial"
 authors = ["Cuauhtémoc Bautista <cuauhtemocbe@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.12.6"
+python = "^3.12"
 flask = "^2.3.3"
 gunicorn = "^23.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+black = "^24.0"
+flake8 = "^7.0"
 
 [build-system]
 requires = ["poetry-core"]
