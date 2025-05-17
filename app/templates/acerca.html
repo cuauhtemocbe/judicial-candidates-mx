@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Acerca del proyecto{% endblock %}
+
+{% block content %}
+
+<section class="space-y-8">
+  <header class="text-center">
+    <h1 class="text-4xl font-bold text-gray-800">Acerca del proyecto</h1>
+    <p class="mt-2 text-gray-500 text-sm">Transparencia y tecnología al servicio de la información ciudadana</p>
+  </header>
+
+  <article class="prose prose-gray max-w-none text-justify text-gray-800">
+    <p>
+      Este sitio fue desarrollado como un experimento informativo que utiliza <strong>inteligencia artificial</strong> para organizar y presentar información sobre las personas candidatas al Poder Judicial de la Federación, en el contexto de la reforma propuesta para 2025.
+    </p>
+
+    <p>
+      El propósito principal es <strong>facilitar el acceso y comparación</strong> de las propuestas de diversos analistas públicos, como Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero, quienes han expresado abiertamente sus preferencias de candidatos y candidatas.
+    </p>
+
+    <p>
+      Este proyecto tiene fines educativos y de transparencia. No sustituye el análisis crítico, ni pretende ser una fuente definitiva. Por ello, se recomienda a toda persona interesada <strong>corroborar las fuentes originales</strong> para obtener una visión completa y contrastada.
+    </p>
+
+    <p>
+      La inteligencia artificial fue utilizada en las siguientes tareas:
+    </p>
+
+    <ul class="list-disc list-inside space-y-1">
+      <li>Identificación y extracción de nombres desde contenido textual y audiovisual.</li>
+      <li>Clasificación por género, analista y orden de preferencia.</li>
+      <li>Generación automatizada del sitio con herramientas como Flask y Tailwind CSS.</li>
+    </ul>
+
+    <p>
+      Toda la información mostrada en esta página fue extraída de fuentes públicas, con el objetivo de promover la discusión informada sobre el sistema judicial mexicano.
+    </p>
+
+    <p>
+      El código fuente está disponible públicamente y puede ser consultado, reutilizado o mejorado por quien lo desee.
+    </p>
+  </article>
+
+  <div class="text-center mt-8">
+    <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
+  </div>
+</section>
+
+{% endblock %}
