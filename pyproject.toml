@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "judicial-web"
+version = "0.1.0"
+description = "Página web sobre la elección del poder judicial"
+authors = ["Cuauhtémoc Bautista <cuauhtemocbe@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.12.6"
+flask = "^2.3.3"
+gunicorn = "^23.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

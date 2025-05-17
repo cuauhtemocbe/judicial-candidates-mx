@@ -1,0 +1,14 @@
+services:
+  web-judicial-candidates-mx:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: judicial-candidates-mx:latest
+    container_name: judicial-candidates-mx
+    command: "/bin/bash"
+    stdin_open: true
+    tty: true
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/workspace
