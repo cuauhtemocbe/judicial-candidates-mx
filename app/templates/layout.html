@@ -12,14 +12,14 @@
   <nav class="max-w-6xl mx-auto mb-6">
     <div class="bg-white shadow rounded-xl px-6 py-4 flex items-center justify-between">
       <div class="text-xl font-semibold text-gray-800">
-        Poder Judicial 2025
+        Elecciones del Poder Judicial 2025
       </div>
       <ul class="flex space-x-6 text-sm font-medium text-gray-700">
         <li>
           <a href="{{ url_for('main.index') }}" class="hover:text-blue-600 transition">Inicio</a>
         </li>
         <li>
-          <a href="#" class="hover:text-blue-600 transition">Acerca de</a>
+            <a href="{{ url_for('main.acerca') }}" class="hover:text-blue-600 transition">Acerca de</a>
         </li>
         <li>
           <a href="#fuentes" class="hover:text-blue-600 transition">Fuentes</a>
@@ -34,8 +34,11 @@
     {% block content %}{% endblock %}
 
     <footer class="text-center text-xs text-gray-500 pt-10 border-t">
-      Proyecto sin fines de lucro. Análisis basado en fuentes públicas y opiniones de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero.
-    </footer>
+        Proyecto sin fines de lucro. Análisis basado en fuentes públicas y opiniones de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero.
+        <p class="mt-2 text-xs text-gray-400">
+          Última actualización: {{ last_updated }}
+        </p>
+      </footer>
   </div>
 </body>
 </html>
