@@ -1,0 +1,14 @@
+services:
+  web-judicial-candidates-mx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-judicial-candidates-mx:latest
+    container_name: web-judicial-candidates-mx
+    command: "gunicorn -b 0.0.0.0:5000 app.main:app"
+    stdin_open: true
+    tty: true
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/workspace
