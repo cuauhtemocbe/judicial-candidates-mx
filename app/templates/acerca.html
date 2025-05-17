@@ -4,13 +4,14 @@
 
 {% block content %}
 
-<section class="space-y-8">
-  <header class="text-center">
+<section class="space-y-10 max-w-4xl mx-auto">
+  <header class="text-center space-y-2 mb-6">
     <h1 class="text-4xl font-bold text-gray-800">Acerca del proyecto</h1>
-    <p class="mt-2 text-gray-500 text-sm">Transparencia y tecnología al servicio de la información ciudadana</p>
+    <p class="text-gray-500 text-sm">Transparencia y tecnología al servicio de la información ciudadana</p>
+    <div class="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
   </header>
 
-  <article class="prose prose-gray max-w-none text-justify text-gray-800">
+  <article class="prose prose-gray max-w-none text-justify text-gray-800 leading-relaxed">
     <p>
       Este sitio fue desarrollado como un experimento informativo que utiliza <strong>inteligencia artificial</strong> para organizar y presentar información sobre las personas candidatas al Poder Judicial de la Federación, en el contexto de la reforma propuesta para 2025.
     </p>
@@ -42,7 +43,12 @@
     </p>
   </article>
 
-  <div class="text-center mt-8">
+  <footer class="text-center mt-12 pt-6 border-t text-xs text-gray-500">
+    Última actualización: {{ last_updated or "Fecha no disponible" }}<br/>
+    Proyecto abierto sin fines de lucro — Revisa las fuentes antes de compartir
+  </footer>
+
+  <div class="text-center mt-6">
     <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
   </div>
 </section>
