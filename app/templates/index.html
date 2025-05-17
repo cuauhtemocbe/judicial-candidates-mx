@@ -1,73 +1,145 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Candidatos al Poder Judicial</title>
-  <style>
-    body { font-family: sans-serif; margin: 2em; }
-    h1, h2, h3 { margin-top: 1.5em; }
-    summary { cursor: pointer; font-weight: bold; }
-    table { width: 100%; border-collapse: collapse; margin-top: 0.5em; }
-    th, td { border: 1px solid #ccc; padding: 0.5em; }
-    th { background: #f0f0f0; }
-    details { margin-bottom: 1em; }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>🌟 Candidatos y Candidatas al Poder Judicial</h1>
-  <p>Información basada en las recomendaciones de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero.</p>
 
-  <h2>📊 Resumen comparativo</h2>
+<body class="bg-gray-100 text-gray-900 font-sans p-6">
+  <div class="max-w-5xl mx-auto bg-white shadow-md rounded-xl p-6 space-y-8">
+    <header class="text-center">
+      <h1 class="text-3xl font-bold mb-2">🌟 Candidatos al Poder Judicial</h1>
+      <p class="text-gray-600">Análisis comparativo de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero</p>
+    </header>
 
-  <h3>Candidatas</h3>
-  <table>
-    <tr><th>Número</th><th>Nombre</th><th>Analistas</th></tr>
-    {% for c in resumen["mujeres"] %}
-      <tr>
-        <td>{{ c.numero }}</td>
-        <td>{{ c.nombre }}</td>
-        <td>{{ c.analistas | join(', ') }}</td>
-      </tr>
-    {% endfor %}
-  </table>
+    <section class="bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm leading-relaxed shadow-sm">
+      <h2 class="text-xl font-semibold text-blue-900 mb-3">📌 Contexto: Elección del Poder Judicial</h2>
+      <p>
+        En 2024, el presidente Andrés Manuel López Obrador propuso una reforma para transformar el proceso de selección
+        de integrantes del Poder Judicial de la Federación. Esta reforma busca que los <strong>ministros de la Suprema Corte de Justicia de la Nación (SCJN)</strong>,
+        <strong>magistrados</strong>, <strong>jueces</strong> y <strong>consejeros</strong> sean elegidos por <strong>voto popular</strong>.
+      </p>
+      <ul class="list-disc list-inside mt-3 space-y-1">
+        <li><strong>11 ministros de la SCJN</strong> serán elegidos.</li>
+        <li>También se renovarán jueces y magistrados federales.</li>
+        <li>La elección podría celebrarse el <strong>2 de junio de 2025</strong>, junto con las elecciones intermedias.</li>
+        <li>Los candidatos serían propuestos por los tres poderes: Ejecutivo, Legislativo y Judicial.</li>
+      </ul>
+      <p class="mt-3">
+        Esta iniciativa pretende <strong>democratizar la justicia</strong>, combatir el nepotismo y fortalecer la
+        cercanía del poder judicial con el pueblo.
+      </p>
+    </section>
 
-  <h3>Candidatos</h3>
-  <table>
-    <tr><th>Número</th><th>Nombre</th><th>Analistas</th></tr>
-    {% for c in resumen["hombres"] %}
-      <tr>
-        <td>{{ c.numero }}</td>
-        <td>{{ c.nombre }}</td>
-        <td>{{ c.analistas | join(', ') }}</td>
-      </tr>
-    {% endfor %}
-  </table>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">📊 Resumen comparativo</h2>
 
-  <h2>📚 Detalle por analista</h2>
+      <div class="mb-6">
+        <h3 class="text-xl font-medium mb-2">Candidatas</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full border text-left text-sm">
+            <thead class="bg-gray-200 font-semibold">
+              <tr>
+                <th class="p-2">Número</th>
+                <th class="p-2">Nombre</th>
+                <th class="p-2">Analistas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in resumen["mujeres"] %}
+              <tr class="border-t">
+                <td class="p-2">{{ c.numero }}</td>
+                <td class="p-2">{{ c.nombre }}</td>
+                <td class="p-2">{{ c.analistas | join(', ') }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-  {% for analista, secciones in data.items() %}
-    <details>
-      <summary>{{ analista.capitalize() }}</summary>
+      <div>
+        <h3 class="text-xl font-medium mb-2">Candidatos</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full border text-left text-sm">
+            <thead class="bg-gray-200 font-semibold">
+              <tr>
+                <th class="p-2">Número</th>
+                <th class="p-2">Nombre</th>
+                <th class="p-2">Analistas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in resumen["hombres"] %}
+              <tr class="border-t">
+                <td class="p-2">{{ c.numero }}</td>
+                <td class="p-2">{{ c.nombre }}</td>
+                <td class="p-2">{{ c.analistas | join(', ') }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-      {% for genero, personas in secciones.items() %}
-        <h3>{{ genero.capitalize() }}</h3>
-        <table>
-          <tr><th>Número</th><th>Nombre</th><th>Razones</th></tr>
-          {% for p in personas %}
-            <tr>
-              <td>{{ p.numero }}</td>
-              <td>{{ p.nombre }}</td>
-              <td>{{ p.razones }}</td>
-            </tr>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">📚 Detalle por analista</h2>
+      {% for analista, secciones in data.items() %}
+      <details class="mb-4 bg-gray-50 rounded-lg p-4 shadow-sm">
+        <summary role="button" class="font-semibold cursor-pointer text-lg">{{ analista.capitalize() }}</summary>
+        <div class="mt-4 space-y-6">
+          {% for genero, personas in secciones.items() %}
+          <div>
+            <h3 class="text-lg font-medium mb-2">{{ genero.capitalize() }}</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full border text-sm">
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="p-2">Número</th>
+                    <th class="p-2">Nombre</th>
+                    <th class="p-2">Razones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for p in personas %}
+                  <tr class="border-t">
+                    <td class="p-2">{{ p.numero }}</td>
+                    <td class="p-2">{{ p.nombre }}</td>
+                    <td class="p-2">{{ p.razones }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
           {% endfor %}
-        </table>
+        </div>
+      </details>
       {% endfor %}
+    </section>
 
-    </details>
-  {% endfor %}
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4">🔗 Fuentes de información</h2>
+      <ul class="list-disc list-inside space-y-2 text-sm">
+        {% for fuente in fuentes %}
+        <li>
+          <strong>{{ fuente.autor }}</strong>: {{ fuente.descripcion }}
+          {% if fuente.enlace %}
+          – <a href="{{ fuente.enlace }}" class="text-blue-600 hover:underline" target="_blank">Ver fuente</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
 
-  <footer style="margin-top: 3em; font-size: 0.9em; color: #666;">
-    Fuente: Análisis público de opinión de Viridiana Ríos, Fabrizio Mejía y Manuel Pedrero. Proyecto experimental.
-  </footer>
+    <footer class="text-center text-xs text-gray-500 pt-6 border-t">
+      Fuente: Opinión pública de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero. Proyecto sin fines de lucro.
+    </footer>
+  </div>
 </body>
+
 </html>
