@@ -1,17 +1,16 @@
-import subprocess
+import json
+from pathlib import Path
 from flask import Blueprint, render_template
 from .data import analistas_data, resumen_candidatos, fuentes
 
 bp = Blueprint("main", __name__)
 
 
-def get_last_commit_date():
+def load_last_updated():
     try:
-        result = subprocess.check_output(
-            ["git", "log", "-1", "--format=%cd", "--date=short"],
-            universal_newlines=True,
-        )
-        return result.strip()
+        path = Path(__file__).parent / "data" / "last_updated.json"
+        with open(path) as f:
+            return json.load(f).get("last_updated")
     except Exception:
         return "Fecha no disponible"
 
@@ -23,7 +22,6 @@ def index():
         data=analistas_data,
         resumen=resumen_candidatos,
         fuentes=fuentes,
-        last_updated=get_last_commit_date(),
     )
 
 
