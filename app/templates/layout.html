@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Candidatos al Poder Judicial{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans antialiased leading-relaxed p-6">
+
+  <!-- Menú de navegación -->
+  <nav class="max-w-6xl mx-auto mb-6">
+    <div class="bg-white shadow rounded-xl px-6 py-4 flex items-center justify-between">
+      <div class="text-xl font-semibold text-gray-800">
+        Poder Judicial 2025
+      </div>
+      <ul class="flex space-x-6 text-sm font-medium text-gray-700">
+        <li>
+          <a href="{{ url_for('main.index') }}" class="hover:text-blue-600 transition">Inicio</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-blue-600 transition">Acerca de</a>
+        </li>
+        <li>
+          <a href="#fuentes" class="hover:text-blue-600 transition">Fuentes</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal -->
+  <div class="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl px-8 py-10 space-y-12">
+    
+    {% block content %}{% endblock %}
+
+    <footer class="text-center text-xs text-gray-500 pt-10 border-t">
+      Proyecto sin fines de lucro. Análisis basado en fuentes públicas y opiniones de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero.
+    </footer>
+  </div>
+</body>
+</html>
