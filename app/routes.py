@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from .data import analistas_data, resumen_candidatos
+from .data import analistas_data, resumen_candidatos, fuentes
 
 bp = Blueprint("main", __name__)
 
@@ -7,5 +7,5 @@ bp = Blueprint("main", __name__)
 @bp.route("/")
 def index():
     return render_template(
-        "index.html", data=analistas_data, resumen=resumen_candidatos
+        "index.html", data=analistas_data, resumen=resumen_candidatos, fuentes=fuentes
     )
