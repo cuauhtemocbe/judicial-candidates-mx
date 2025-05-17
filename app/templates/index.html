@@ -1,12 +1,73 @@
-<!-- app/templates/index.html -->
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Poder Judicial</title>
+  <title>Candidatos al Poder Judicial</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    h1, h2, h3 { margin-top: 1.5em; }
+    summary { cursor: pointer; font-weight: bold; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5em; }
+    th, td { border: 1px solid #ccc; padding: 0.5em; }
+    th { background: #f0f0f0; }
+    details { margin-bottom: 1em; }
+  </style>
 </head>
 <body>
-  <h1>Bienvenido a la página del Poder Judicial</h1>
-  <p>Esta es una versión inicial.</p>
+  <h1>🌟 Candidatos y Candidatas al Poder Judicial</h1>
+  <p>Información basada en las recomendaciones de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero.</p>
+
+  <h2>📊 Resumen comparativo</h2>
+
+  <h3>Candidatas</h3>
+  <table>
+    <tr><th>Número</th><th>Nombre</th><th>Analistas</th></tr>
+    {% for c in resumen["mujeres"] %}
+      <tr>
+        <td>{{ c.numero }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.analistas | join(', ') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h3>Candidatos</h3>
+  <table>
+    <tr><th>Número</th><th>Nombre</th><th>Analistas</th></tr>
+    {% for c in resumen["hombres"] %}
+      <tr>
+        <td>{{ c.numero }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.analistas | join(', ') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>📚 Detalle por analista</h2>
+
+  {% for analista, secciones in data.items() %}
+    <details>
+      <summary>{{ analista.capitalize() }}</summary>
+
+      {% for genero, personas in secciones.items() %}
+        <h3>{{ genero.capitalize() }}</h3>
+        <table>
+          <tr><th>Número</th><th>Nombre</th><th>Razones</th></tr>
+          {% for p in personas %}
+            <tr>
+              <td>{{ p.numero }}</td>
+              <td>{{ p.nombre }}</td>
+              <td>{{ p.razones }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% endfor %}
+
+    </details>
+  {% endfor %}
+
+  <footer style="margin-top: 3em; font-size: 0.9em; color: #666;">
+    Fuente: Análisis público de opinión de Viridiana Ríos, Fabrizio Mejía y Manuel Pedrero. Proyecto experimental.
+  </footer>
 </body>
 </html>

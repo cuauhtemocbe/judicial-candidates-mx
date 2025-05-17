@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Resumen de Candidatos</title>
+</head>
+<body>
+  <h1>Resumen de Candidatos Apoyados</h1>
+
+  <h2>Candidatas</h2>
+  <table border="1">
+    <tr><th>Número</th><th>Nombre</th><th>Analistas</th></tr>
+    {% for c in resumen.mujeres %}
+      <tr>
+        <td>{{ c.numero }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.analistas | join(', ') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Candidatos</h2>
+  <table border="1">
+    <tr><th>Número</th><th>Nombre</th><th>Analistas</th></tr>
+    {% for c in resumen.hombres %}
+      <tr>
+        <td>{{ c.numero }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.analistas | join(', ') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="/">Volver</a>
+</body>
+</html>
