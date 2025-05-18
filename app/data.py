@@ -71,7 +71,7 @@ analistas_data = {
             },
             {
                 "numero": "31",
-                "nombre": "Natalia Téz Torres Orosco",
+                "nombre": "Natalia Téllez Torres Orosco",
                 "razones": "Jurídica de Raquel Buenrostro. Combatió la evasión fiscal de grandes empresas. Luchó contra factureras y empresas fantasma. Clave en la obtención de recursos para programas sociales.",
             },
             {
@@ -132,7 +132,7 @@ analistas_data = {
             },
             {
                 "numero": "31",
-                "nombre": "Natalia Télez Torres Orozco",
+                "nombre": "Natalia Téllez Torres Orozco",
                 "razones": "Perfil limpio, magistrada laboral pro-trabajadores, avalada por Raquel Buenrostro.",
             },
         ],
@@ -165,7 +165,7 @@ resumen_candidatos = {
     "mujeres": [
         {
             "numero": "31",
-            "nombre": "Natalia Télez Torres Orozco",
+            "nombre": "Natalia Téllez Torres Orozco",
             "analistas": ["Fabrizio", "Pedrero", "Viridiana"]
         },
         {
