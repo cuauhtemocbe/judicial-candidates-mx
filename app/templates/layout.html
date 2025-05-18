@@ -1,44 +1,47 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Candidatos al Poder Judicial{% endblock %}</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans antialiased leading-relaxed p-6">
+
+<body class="bg-gray-100 text-gray-900 font-sans antialiased leading-relaxed">
 
   <!-- Menú de navegación -->
-  <nav class="max-w-6xl mx-auto mb-6">
-    <div class="bg-white shadow rounded-xl px-6 py-4 flex items-center justify-between">
-      <div class="text-xl font-semibold text-gray-800">
-        Elecciones del Poder Judicial 2025
-      </div>
-      <ul class="flex space-x-6 text-sm font-medium text-gray-700">
-        <li>
-          <a href="{{ url_for('main.index') }}" class="hover:text-blue-600 transition">Inicio</a>
-        </li>
-        <li>
-            <a href="{{ url_for('main.acerca') }}" class="hover:text-blue-600 transition">Acerca de</a>
-        </li>
-        <li>
-          <a href="#fuentes" class="hover:text-blue-600 transition">Fuentes</a>
-        </li>
-      </ul>
+  <nav class="max-w-4xl mx-auto py-6 px-4">
+    <div class="text-xl font-semibold text-gray-800 mb-2">
+      Elecciones del Poder Judicial 2025
     </div>
+    <ul class="flex flex-wrap gap-4 text-sm font-medium text-gray-700">
+      <li>
+        <a href="{{ url_for('main.index') }}" class="hover:text-blue-600 transition">Inicio</a>
+      </li>
+      <li>
+        <a href="{{ url_for('main.acerca') }}" class="hover:text-blue-600 transition">Acerca de</a>
+      </li>
+      <li>
+        <a href="#fuentes" class="hover:text-blue-600 transition">Fuentes</a>
+      </li>
+    </ul>
   </nav>
 
-  <!-- Contenedor principal -->
-  <div class="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl px-8 py-10 space-y-12">
-    
+  <!-- Contenido principal -->
+  <main class="px-4">
     {% block content %}{% endblock %}
+  </main>
 
-    <footer class="text-center text-xs text-gray-500 pt-10 border-t">
-        Proyecto sin fines de lucro. Análisis basado en fuentes públicas y opiniones de Fabrizio Mejía, Viridiana Ríos y Manuel Pedrero.
-        <p class="mt-2 text-xs text-gray-400">
-          Última actualización: {{ last_updated }}
-        </p>
-      </footer>
-  </div>
+  <!-- Pie de página -->
+  <footer class="text-center text-xs text-gray-500 mt-16 mb-8 px-4">
+    Proyecto sin fines de lucro. Análisis basado en fuentes públicas y opiniones de Fabrizio Mejía, Viridiana Ríos y
+    Manuel Pedrero.
+    <p class="mt-2 text-gray-400">
+      Última actualización: {{ last_updated or "Fecha no disponible" }}
+    </p>
+  </footer>
+
 </body>
+
 </html>
