@@ -32,59 +32,71 @@
 
 <section class="max-w-3xl mx-auto mb-12">
   <h2 class="text-2xl font-semibold mb-6">Resumen comparativo</h2>
+  <p>
+    Este análisis muestra a los candidatos y candidatas al Poder Judicial que han sido recomendados por al menos uno de los tres analistas: 
+    <strong>Viridiana Ríos</strong>, <strong>Fabrizio Mejía</strong> y <strong>Manuel Pedrero</strong>. 
+    La información está agrupada por género y ordenada de acuerdo con el número de analistas que coinciden en su recomendación.
+  </p>
+  <p class="mt-4">
+    De esta forma, es posible identificar qué perfiles concentran mayor consenso, así como observar qué analista(es) respalda(n) cada candidatura.
+  </p>
 
-  <h3 class="text-lg font-semibold mb-3">Candidatas</h3>
-  <div class="grid gap-4 sm:grid-cols-2">
-    {% for c in resumen["mujeres"] %}
-    <article class="p-4 bg-white shadow rounded">
-      <p class="font-medium text-base text-gray-800">
-        {{ c.numero }} {{ c.nombre }}
-      </p>
-      <p class="text-sm text-gray-600">Analistas: {{ c.analistas | join(', ') }}</p>
-    </article>
-    {% endfor %}
-  </div>
+  <h3 class="text-lg font-semibold mt-3 mb-3">Candidatas</h3>
+<ul class="space-y-2">
+  {% for c in resumen["mujeres"] %}
+  <li class="border-l-4 border-blue-500 pl-3">
+    <p class="text-base text-gray-800 font-medium">
+      {{ c.numero }} {{ c.nombre }}
+    </p>
+    <p class="text-sm text-gray-600">Analistas: {{ c.analistas | join(', ') }}</p>
+  </li>
+  {% endfor %}
+</ul>
 
-  <h3 class="text-lg font-semibold mt-10 mb-3">Candidatos</h3>
-  <div class="grid gap-4 sm:grid-cols-2">
-    {% for c in resumen["hombres"] %}
-    <article class="p-4 bg-white shadow rounded">
-      <p class="font-medium text-base text-gray-800">
-        {{ c.numero }} {{ c.nombre }}
-      </p>
-      <p class="text-sm text-gray-600">Analistas: {{ c.analistas | join(', ') }}</p>
-    </article>
-    {% endfor %}
-  </div>
-</section>
+<h3 class="text-lg font-semibold mt-10 mb-3">Candidatos</h3>
+<ul class="space-y-2">
+  {% for c in resumen["hombres"] %}
+  <li class="border-l-4 border-green-500 pl-3">
+    <p class="text-base text-gray-800 font-medium">
+      {{ c.numero }} {{ c.nombre }}
+    </p>
+    <p class="text-sm text-gray-600">Analistas: {{ c.analistas | join(', ') }}</p>
+  </li>
+  {% endfor %}
+</ul>
 
-<section class="max-w-3xl mx-auto mb-12">
+<section class="max-w-3xl mx-auto mt-8 mb-12">
   <h2 class="text-2xl font-semibold mb-6">Detalle por analista</h2>
+  <p class="text-sm text-gray-600 mb-6">
+    A continuación se presenta el listado de candidatas y candidatos recomendados por cada analista. 
+    El resumen de la razón del voto fue generado con apoyo de inteligencia artificial a partir del análisis original.
+  </p>
+
   {% for analista, secciones in data.items() %}
-  <details class="mb-8 bg-white p-5 rounded shadow group open:shadow-md transition-all">
-    <summary class="font-semibold text-lg cursor-pointer text-gray-800 hover:text-blue-600 flex justify-between items-center">
+  <details class="mb-6 group">
+    <summary class="font-semibold text-lg cursor-pointer text-gray-800 hover:text-blue-600 py-2 border-b border-gray-300">
       {{ analista.capitalize() }}
     </summary>
-    <div class="mt-4 space-y-6">
+
+    <div class="mt-3 space-y-4 pl-2 border-l border-gray-200">
       {% for genero, personas in secciones.items() %}
       <div>
-        <h4 class="text-md font-medium text-gray-700 mb-2">{{ genero.capitalize() }}</h4>
-        {% for p in personas %}
-        <article class="p-4 bg-gray-50 rounded mb-4">
-          <p class="font-medium text-base text-gray-800">
-            {{ p.numero }} {{ p.nombre }}
-          </p>
-          <!-- Ver razón del voto -->
-          <details class="mt-2 text-sm text-gray-700 leading-relaxed">
-            <summary class="font-semibold hover:text-blue-600 cursor-pointer">
-              Razón del voto
-            </summary>
-            <div class="mt-2 pl-2 text-justify whitespace-pre-line">
-              {{ p.razones }}
+        <h1 class="text-sm font-semibold text-gray-600 mb-1">{{ genero.capitalize() }}</h1>
+        <ul class="space-y-2">
+          {% for p in personas %}
+          <li>
+            <div class="flex flex-col text-base text-gray-800 leading-snug">
+              <div>
+                <span class="font-semibold">{{ p.numero }}</span> {{ p.nombre }}
+              </div>
+              <p class="text-sm text-gray-700 text-justify pl-4 mt-0.5">
+                {{ p.razones }}
+              </p>
             </div>
-          </details>
-        </article>
-        {% endfor %}
+          </li>
+          {% endfor %}
+        </ul>
+        
       </div>
       {% endfor %}
     </div>
