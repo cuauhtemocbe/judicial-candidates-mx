@@ -166,101 +166,117 @@ resumen_candidatos = {
         {
             "numero": "31",
             "nombre": "Natalia Téllez Torres Orozco",
-            "analistas": ["Fabrizio", "Pedrero", "Viridiana"]
+            "analistas": ["Fabrizio", "Pedrero", "Viridiana"],
         },
         {
             "numero": "03",
             "nombre": "Lenia Batres",
-            "analistas": ["Fabrizio", "Pedrero"]
+            "analistas": ["Fabrizio", "Pedrero"],
         },
         {
             "numero": "26",
             "nombre": "María Estela Ríos",
-            "analistas": ["Fabrizio", "Pedrero"]
+            "analistas": ["Fabrizio", "Pedrero"],
         },
         {
             "numero": "22",
             "nombre": "Loreta Ortiz",
-            "analistas": ["Fabrizio", "Pedrero"]
+            "analistas": ["Fabrizio", "Pedrero"],
         },
-        {
-            "numero": "06",
-            "nombre": "Selene Cruz Alcalá",
-            "analistas": ["Viridiana"]
-        },
+        {"numero": "06", "nombre": "Selene Cruz Alcalá", "analistas": ["Viridiana"]},
         {
             "numero": "01",
             "nombre": "Olivia Aguirre Bonilla",
-            "analistas": ["Viridiana"]
+            "analistas": ["Viridiana"],
         },
         {
             "numero": "05",
             "nombre": "Marisol Castañeda Pérez",
-            "analistas": ["Viridiana"]
+            "analistas": ["Viridiana"],
         },
         {
             "numero": "13",
             "nombre": "Alma Delia González Centeno",
-            "analistas": ["Viridiana"]
+            "analistas": ["Viridiana"],
         },
-        {
-            "numero": "08",
-            "nombre": "Yasmín Esquivel",
-            "analistas": ["Pedrero"]
-        }
+        {"numero": "08", "nombre": "Yasmín Esquivel", "analistas": ["Pedrero"]},
     ],
     "hombres": [
         {
             "numero": "40",
             "nombre": "Isaac de Paz González",
-            "analistas": ["Pedrero", "Viridiana"]
+            "analistas": ["Pedrero", "Viridiana"],
         },
         {
             "numero": "42",
             "nombre": "Raymundo Espinoza Hernández",
-            "analistas": ["Fabrizio", "Viridiana"]
+            "analistas": ["Fabrizio", "Viridiana"],
         },
         {
             "numero": "36",
             "nombre": "Federico Anaya Gallardo",
-            "analistas": ["Fabrizio", "Pedrero"]
+            "analistas": ["Fabrizio", "Pedrero"],
         },
         {
             "numero": "34",
             "nombre": "Hugo Aguilar Ortiz",
-            "analistas": ["Fabrizio", "Pedrero"]
+            "analistas": ["Fabrizio", "Pedrero"],
         },
         {
             "numero": "57",
             "nombre": "Carlos Enrique Odriozola Mariscal",
-            "analistas": ["Viridiana"]
+            "analistas": ["Viridiana"],
         },
-        {
-            "numero": "38",
-            "nombre": "Edgar Corzo Sosa",
-            "analistas": ["Viridiana"]
-        },
+        {"numero": "38", "nombre": "Edgar Corzo Sosa", "analistas": ["Viridiana"]},
         {
             "numero": "55",
             "nombre": "Sergio Javier Molina Martínez",
-            "analistas": ["Viridiana"]
+            "analistas": ["Viridiana"],
         },
         {
             "numero": "41",
             "nombre": "Irving Espinoza Betanzo",
-            "analistas": ["Fabrizio"]
+            "analistas": ["Fabrizio"],
         },
         {
             "numero": "28",
             "nombre": "Miguel Ángel de los Santos Cruz",
-            "analistas": ["Fabrizio"]
+            "analistas": ["Fabrizio"],
         },
-        {
-            "numero": "49",
-            "nombre": "César Gutiérrez Priego",
-            "analistas": ["Pedrero"]
-        }
-    ]
+        {"numero": "49", "nombre": "César Gutiérrez Priego", "analistas": ["Pedrero"]},
+    ],
+}
+
+candidatos_tdj = {
+  "mujeres": [
+    {
+      "numero": "04",
+      "nombre": "Indira Isabel García Pérez",
+      "razones": "Con sólida trayectoria en transparencia, auditoría y docencia jurídica, proviene de una comunidad rural y ha ocupado cargos clave en el ámbito local. Su perfil técnico y experiencia ciudadana fortalecen la visión de un Tribunal más riguroso y cercano a la sociedad. Aporta perspectiva territorial y compromiso con la rendición de cuentas."
+    },
+    {
+      "numero": "08",
+      "nombre": "Fany Lorena Jiménez Aguirre",
+      "razones": "Magistrada presidenta en Jalisco con amplia experiencia judicial. Pese a cuestionamientos políticos, ha defendido su independencia. Tiene un perfil técnico sólido, con formación doctoral y vocación por la justicia administrativa. Su permanencia en el cargo ha sido respaldada por la vía legal y su compromiso con el servicio público es probado."
+    },
+    {
+      "numero": "06",
+      "nombre": "Anabel Gordillo Argüello",
+      "razones": "Funcionaria judicial desde 2009, con experiencia directa en el Tribunal Electoral y trabajo técnico en ponencias clave. Defiende la reconciliación entre técnica jurídica y cercanía con las personas. Su formación y trayectoria judicial aportan estabilidad, profesionalismo y compromiso con una justicia con rostro humano."
+    }
+  ],
+  "hombres": [
+    {
+      "numero": "24",
+      "nombre": "Juvenal Carbajal Díaz",
+      "razones": "Magistrado federal con amplia trayectoria en el Poder Judicial, propone una justicia cercana, transparente y apoyada en tecnología. Enfatiza la disciplina judicial, sanciones contra el acoso, evaluación continua de juzgadores y educación judicial abierta. Aunque tiene vínculos familiares polémicos, su experiencia técnica es destacable y propone un modelo riguroso y moderno para el tribunal."
+    },
+    {
+      "numero": "30",
+      "nombre": "Gildardo Galinzoga Esparza",
+      "razones": "Juzgador desde 1993 con experiencia en materia administrativa y laboral. Plantea una visión firme contra la corrupción, justicia eficiente y disciplinaria con enfoque en derechos humanos y perspectiva de género. Aunque su enfoque personal genera dudas, su plan incluye digitalización de expedientes, revisión del trabajo judicial y fortalecimiento de la independencia judicial."
+    }
+  ]
 }
 
 fuentes = [
@@ -278,10 +294,5 @@ fuentes = [
         "autor": "Manuel Pedrero",
         "descripcion": "Video 'Mis votos para ministros y ministras de la Suprema Corte de Justicia.",
         "enlace": "https://www.youtube.com/watch?v=iu_il27UkJw",
-    },
-    {
-        "autor": "Reforma judicial (propuesta 2024)",
-        "descripcion": "Documento y sitio oficial sobre la reforma constitucional del Poder Judicial en México.",
-        "enlace": "https://reformajudicial.presidencia.gob.mx/",
     },
 ]
