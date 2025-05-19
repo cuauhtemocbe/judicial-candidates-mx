@@ -20,10 +20,16 @@
         <a href="{{ url_for('main.index') }}" class="hover:text-blue-600 transition">Inicio</a>
       </li>
       <li>
+        <a href="{{ url_for('main.index') }}#purple-ballot" class="text-purple-700 hover:text-blue-600 transition">Boleta Morada</a>
+      </li>
+      <li>
+        <a href="{{ url_for('main.boleta_verde') }}" class="text-emerald-400 hover:text-blue-600 transition">Boleta Verde</a>
+      </li>
+      <li>
         <a href="{{ url_for('main.acerca') }}" class="hover:text-blue-600 transition">Acerca de</a>
       </li>
       <li>
-        <a href="#fuentes" class="hover:text-blue-600 transition">Fuentes</a>
+        <a href="{{ url_for('main.index') }}#fuentes" class="hover:text-blue-600 transition">Fuentes</a>
       </li>
     </ul>
   </nav>
