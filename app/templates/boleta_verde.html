@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}Boleta Verde | Candidatos al Poder Judicial{% endblock %}
+
+{% block content %}
+
+<section class="space-y-10 max-w-4xl mx-auto">
+  <header class="text-center space-y-2 mb-6">
+    <h1 class="text-4xl font-bold text-gray-800">Boleta Verde: Mejores candidatos al Consejo de la Judicatura Federal</h1>
+    <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+      Comparativo de candidatas y candidatos de Viri Ríos
+    </p>
+    <div class="w-24 h-1 bg-green-600 mx-auto rounded-full"></div>
+  </header>
+
+  <article class="max-w-none text-justify text-gray-800 text-base leading-relaxed space-y-4">
+    <p>
+      Es la Boleta para elegir a tres magistradas y dos magistrados que integrarán el Tribunal de Disciplina Judicial (TDJ), encargado de supervisar y sancionar conductas dentro del Poder Judicial.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-4 mb-2">Mejores propuestas</h2>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Mujeres</h3>
+    <ul class="space-y-3">
+      {% for c in candidatos_tdj["mujeres"] %}
+      <li class="border-l-4 border-emerald-400 pl-3">
+        <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
+        <p class="text-sm text-gray-600">{{ c.razones }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">Hombres</h3>
+    <ul class="space-y-3">
+      {% for c in candidatos_tdj["hombres"] %}
+      <li class="border-l-4 border-emerald-400 pl-3">
+        <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
+        <p class="text-sm text-gray-600">{{ c.razones }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Metodología de evaluación</h2>
+
+    <p>
+      Análisis realizado por la analista <strong>Viridiana Ríos</strong> con base en criterios técnicos y ciudadanos.
+      La calificación de cada candidatura en la <strong>Boleta Verde</strong> se basa en tres criterios:
+    </p>
+
+    <ul class="list-disc list-inside pl-4 space-y-2">
+      <li>
+        <strong>Experiencia:</strong> Trayectoria profesional y académica afín al CJF. Escala del 1 al 5. Sin experiencia, se asigna "NA".
+      </li>
+      <li>
+        <strong>Independencia:</strong> Vínculos con partidos o figuras del poder. Si los hay, se asigna "NA".
+      </li>
+      <li>
+        <strong>Viabilidad:</strong> Propuestas fuera del CJF restan 0.5. Las inviables se marcan en amarillo.
+      </li>
+    </ul>
+
+    <p>
+      El objetivo es destacar perfiles con autonomía, experiencia y propuestas útiles para la justicia en México.
+    </p>
+  </article>
+
+  <div class="text-center mt-8">
+    <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
+  </div>
+</section>
+
+{% endblock %}
