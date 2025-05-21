@@ -23,7 +23,7 @@
     <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Mujeres</h3>
     <ul class="space-y-3">
       {% for c in candidatos_tdj["mujeres"] %}
-      <li class="border-l-4 border-emerald-400 pl-3">
+      <li class="border-l-4 border-emerald-600 pl-3">
         <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
         <p class="text-sm text-gray-600">{{ c.razones }}</p>
       </li>
@@ -33,7 +33,7 @@
     <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">Hombres</h3>
     <ul class="space-y-3">
       {% for c in candidatos_tdj["hombres"] %}
-      <li class="border-l-4 border-emerald-400 pl-3">
+      <li class="border-l-4 border-emerald-600 pl-3">
         <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
         <p class="text-sm text-gray-600">{{ c.razones }}</p>
       </li>
