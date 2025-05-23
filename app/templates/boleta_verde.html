@@ -6,16 +6,19 @@
 
 <section class="space-y-10 max-w-4xl mx-auto">
   <header class="text-center space-y-2 mb-6">
-    <h1 class="text-4xl font-bold text-gray-800">Boleta Verde: Mejores candidatos al Consejo de la Judicatura Federal</h1>
+    <h1 class="text-4xl font-bold text-gray-800">
+      <span class="text-emerald-600">Boleta Verde: </span>Candidatos al Consejo de la Judicatura Federal
+    </h1>
     <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
       Comparativo de candidatas y candidatos de Viri Ríos
     </p>
-    <div class="w-24 h-1 bg-green-600 mx-auto rounded-full"></div>
+    <div class="w-24 h-1 bg-emerald-600 mx-auto rounded-full"></div>
   </header>
 
   <article class="max-w-none text-justify text-gray-800 text-base leading-relaxed space-y-4">
     <p>
-      Es la Boleta para elegir a tres magistradas y dos magistrados que integrarán el Tribunal de Disciplina Judicial (TDJ), encargado de supervisar y sancionar conductas dentro del Poder Judicial.
+      Es la Boleta para elegir a tres magistradas y dos magistrados que integrarán el Tribunal de Disciplina Judicial
+      (TDJ), encargado de supervisar y sancionar conductas dentro del Poder Judicial.
     </p>
 
     <h2 class="text-xl font-semibold mt-4 mb-2">Mejores propuestas</h2>
@@ -24,8 +27,22 @@
     <ul class="space-y-3">
       {% for c in candidatos_tdj["mujeres"] %}
       <li class="border-l-4 border-emerald-600 pl-3">
-        <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
-        <p class="text-sm text-gray-600">{{ c.razones }}</p>
+        <button class="text-left w-full flex items-center justify-between focus:outline-none group" onclick="
+        document.getElementById('razones-tdj-mujer-{{ loop.index }}').classList.toggle('hidden');
+        document.getElementById('icon-tdj-mujer-{{ loop.index }}').classList.toggle('rotate-180');
+      ">
+          <div>
+            <span class="text-base font-semibold text-gray-900">{{ c.numero }}</span>
+            <span class="text-base font-semibold text-gray-700"> {{ c.nombre }}</span>
+          </div>
+          <svg id="icon-tdj-mujer-{{ loop.index }}" class="w-4 h-4 text-gray-500 transition-transform duration-200"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p id="razones-tdj-mujer-{{ loop.index }}" class="text-sm text-gray-600 hidden mt-1">
+          {{ c.razones }}
+        </p>
       </li>
       {% endfor %}
     </ul>
@@ -34,8 +51,22 @@
     <ul class="space-y-3">
       {% for c in candidatos_tdj["hombres"] %}
       <li class="border-l-4 border-emerald-600 pl-3">
-        <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
-        <p class="text-sm text-gray-600">{{ c.razones }}</p>
+        <button class="text-left w-full flex items-center justify-between focus:outline-none group" onclick="
+        document.getElementById('razones-tdj-hombre-{{ loop.index }}').classList.toggle('hidden');
+        document.getElementById('icon-tdj-hombre-{{ loop.index }}').classList.toggle('rotate-180');
+      ">
+          <div>
+            <span class="text-base font-semibold text-gray-900">{{ c.numero }}</span>
+            <span class="text-base font-semibold text-gray-700"> {{ c.nombre }}</span>
+          </div>
+          <svg id="icon-tdj-hombre-{{ loop.index }}" class="w-4 h-4 text-gray-500 transition-transform duration-200"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p id="razones-tdj-hombre-{{ loop.index }}" class="text-sm text-gray-600 hidden mt-1">
+          {{ c.razones }}
+        </p>
       </li>
       {% endfor %}
     </ul>
@@ -49,7 +80,8 @@
 
     <ul class="list-disc list-inside pl-4 space-y-2">
       <li>
-        <strong>Experiencia:</strong> Trayectoria profesional y académica afín al CJF. Escala del 1 al 5. Sin experiencia, se asigna "NA".
+        <strong>Experiencia:</strong> Trayectoria profesional y académica afín al CJF. Escala del 1 al 5. Sin
+        experiencia, se asigna "NA".
       </li>
       <li>
         <strong>Independencia:</strong> Vínculos con partidos o figuras del poder. Si los hay, se asigna "NA".

@@ -8,7 +8,8 @@
   <h2 class="text-3xl font-bold text-center">Participa en la elección del Poder Judicial</h2>
   <div class="w-24 h-1 mx-auto rounded-full mb-2"></div>
   <p>
-    Este 2025 marca un hecho sin precedentes: la ciudadanía podrá votar por quienes ocuparán cargos clave en el Poder Judicial. La votación será el <strong>próximo domingo 1 de junio de 2025</strong>.
+    Este 2025 marca un hecho sin precedentes: la ciudadanía podrá votar por quienes ocuparán cargos clave en el Poder
+    Judicial. La votación será el <strong>próximo domingo 1 de junio de 2025</strong>.
   </p>
 
   <p>
@@ -26,8 +27,9 @@
 
   <p>
     En esta página comparto mi análisis y los perfiles por los que votaré.<br>
-    Actualmente puedes consultar las candidaturas de las boletas <strong>morada</strong> y <strong>verde</strong>.<br>
-    Próximamente: candidaturas de la <strong>boleta azul</strong> y una <strong>lista roja</strong> de perfiles a evitar.
+    Actualmente puedes consultar las candidaturas de las boletas <strong>morada</strong>, <strong>verde</strong> y
+    <strong>azul</strong>. <br>
+    También hay una lista negra <strong>🛑 lista negra</strong> de perfiles a evitar.
   </p>
 </section>
 
@@ -36,94 +38,100 @@
     <span class="text-purple-700">Boleta Morada: </span>Candidatos a la Suprema Corte de Justicia
   </h2>
   <p>
-    Este análisis muestra a los candidatos y candidatas al Poder Judicial que han sido recomendados por al menos uno de los tres analistas: 
-    <strong>Viridiana Ríos</strong>, <strong>Fabrizio Mejía</strong> y <strong>Manuel Pedrero</strong>. 
-    La información está agrupada por género y ordenada de acuerdo con el número de analistas que coinciden en su recomendación.
+    Este análisis muestra a los candidatos y candidatas al Poder Judicial que han sido recomendados por al menos uno de
+    los tres analistas:
+    <strong>Viridiana Ríos</strong>, <strong>Fabrizio Mejía</strong> y <strong>Manuel Pedrero</strong>.
+    La información está agrupada por género y ordenada de acuerdo con el número de analistas que coinciden en su
+    recomendación.
   </p>
   <p class="mt-4">
-    De esta forma, es posible identificar qué perfiles concentran mayor consenso, así como observar qué analista(es) respalda(n) cada candidatura.
+    De esta forma, es posible identificar qué perfiles concentran mayor consenso, así como observar qué analista(es)
+    respalda(n) cada candidatura.
   </p>
 
   <h3 class="text-lg font-semibold mt-2 mb-2">Candidatas</h3>
-<ul class="space-y-2">
-  {% for c in resumen["mujeres"] %}
-  <li class="border-l-4 border-purple-500 pl-3">
-    <p class="text-base text-gray-800 font-medium">
-      {{ c.numero }} {{ c.nombre }}
-    </p>
-    <p class="text-sm text-gray-600">Analistas: {{ c.analistas | join(', ') }}</p>
-  </li>
-  {% endfor %}
-</ul>
-
-<h3 class="text-lg font-semibold mt-2 mb-2">Candidatos</h3>
-<ul class="space-y-2">
-  {% for c in resumen["hombres"] %}
-  <li class="border-l-4 border-violet-500 pl-3">
-    <p class="text-base text-gray-800 font-medium">
-      {{ c.numero }} {{ c.nombre }}
-    </p>
-    <p class="text-sm text-gray-600">Analistas: {{ c.analistas | join(', ') }}</p>
-  </li>
-  {% endfor %}
-</ul>
-<p class="text-center mt-8">
-  <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
-</p>
-<section class="max-w-3xl mx-auto mt-8 mb-12">
-  <h2 class="text-2xl font-semibold mb-3">Detalle de candidatos</h2>
-  <p class="text-sm text-gray-600 mb-3">
-    A continuación se presenta el listado de candidatas y candidatos a la <strong>SCJN</strong> recomendados por cada analista. 
-    El resumen de la razón del voto fue generado con apoyo de inteligencia artificial a partir del análisis original.
-  </p>
-
-  {% for analista, secciones in data.items() %}
-  <details class="mb-6 group">
-    <summary class="font-semibold text-lg cursor-pointer text-gray-800 hover:text-blue-600 py-2 border-b border-gray-300">
-      {{ analista.capitalize() }}
-    </summary>
-
-    <div class="mt-3 space-y-4 pl-2 border-l border-gray-200">
-      {% for genero, personas in secciones.items() %}
-      <div>
-        <h1 class="text-sm font-semibold text-gray-600 mb-1">{{ genero.capitalize() }}</h1>
-        <ul class="space-y-2">
-          {% for p in personas %}
-          <li>
-            <div class="flex flex-col text-base text-gray-800 leading-snug">
-              <div>
-                <span class="font-semibold">{{ p.numero }}</span> {{ p.nombre }}
-              </div>
-              <p class="text-sm text-gray-700 text-justify pl-4 mt-0.5">
-                {{ p.razones }}
-              </p>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-        
+  <ul class="space-y-3">
+    {% for c in resumen["mujeres"] %}
+    <li class="border-l-4 border-purple-500 pl-3">
+      <div class="flex items-center justify-between">
+        <button class="text-left focus:outline-none group" onclick="
+        document.getElementById('detalle-mujer-{{ loop.index }}').classList.toggle('hidden');
+        document.getElementById('icon-mujer-{{ loop.index }}').classList.toggle('rotate-180');
+      ">
+          <span class="text-base font-semibold text-gray-900">{{ c.numero }}</span>
+          <span class="text-base font-semibold text-gray-700"> {{ c.nombre }}</span>
+        </button>
+        <svg id="icon-mujer-{{ loop.index }}" class="w-4 h-4 text-gray-500 transition-transform duration-200"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
       </div>
-      {% endfor %}
-    </div>
-  </details>
-  {% endfor %}
-</section>
 
-<section id="fuentes" class="max-w-3xl mx-auto pt-4">
-  <h2 class="text-2xl font-semibold mb-4">Fuentes de información</h2>
-  <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed">
-    {% for fuente in fuentes %}
-    <li>
-      <strong>{{ fuente.autor }}</strong>: {{ fuente.descripcion }}
-      {% if fuente.enlace %}
-      – <a href="{{ fuente.enlace }}" class="text-blue-600 hover:underline" target="_blank">Ver fuente</a>
-      {% endif %}
+      <!-- SIEMPRE VISIBLE -->
+      <p class="text-sm text-gray-600 mb-1">Analistas: {{ c.analistas | join(', ') }}</p>
+
+      <!-- DETALLE OCULTO -->
+      <div id="detalle-mujer-{{ loop.index }}" class="hidden mt-2">
+        {% for analista in c.analistas %}
+        <div class="ml-4 mt-1">
+          <p class="text-sm font-semibold text-gray-600">Análisis {{ analista }}:</p>
+          <p class="text-sm text-gray-700 text-justify">{{ c.detalle[analista] }}</p>
+        </div>
+        {% endfor %}
+      </div>
     </li>
     {% endfor %}
   </ul>
-  <p class="text-center mt-8">
-    <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
-  </p>
-</section>
 
-{% endblock %}
+  <h3 class="text-lg font-semibold mt-8 mb-2">Candidatos</h3>
+  <ul class="space-y-3">
+    {% for c in resumen["hombres"] %}
+    <li class="border-l-4 border-violet-500 pl-3">
+      <div class="flex items-center justify-between">
+        <button class="text-left focus:outline-none group" onclick="
+        document.getElementById('detalle-hombre-{{ loop.index }}').classList.toggle('hidden');
+        document.getElementById('icon-hombre-{{ loop.index }}').classList.toggle('rotate-180');
+      ">
+          <span class="text-base font-semibold text-gray-900">{{ c.numero }}</span>
+          <span class="text-base font-semibold text-gray-700"> {{ c.nombre }}</span>
+        </button>
+        <svg id="icon-hombre-{{ loop.index }}" class="w-4 h-4 text-gray-500 transition-transform duration-200"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+
+      <!-- SIEMPRE VISIBLE -->
+      <p class="text-sm text-gray-600 mb-1">Analistas: {{ c.analistas | join(', ') }}</p>
+
+      <!-- DETALLE OCULTO -->
+      <div id="detalle-hombre-{{ loop.index }}" class="hidden mt-2">
+        {% for analista in c.analistas %}
+        <div class="ml-4 mt-1">
+          <p class="text-sm font-semibold text-gray-600">Análisis {{ analista }}:</p>
+          <p class="text-sm text-gray-700 text-justify">{{ c.detalle[analista] }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <section id="fuentes" class="max-w-3xl mx-auto pt-4">
+    <h2 class="text-2xl font-semibold mb-4">Fuentes de información</h2>
+    <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed">
+      {% for fuente in fuentes %}
+      <li>
+        <strong>{{ fuente.autor }}</strong>: {{ fuente.descripcion }}
+        {% if fuente.enlace %}
+        – <a href="{{ fuente.enlace }}" class="text-blue-600 hover:underline" target="_blank">Ver fuente</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="text-center mt-8">
+      <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
+    </p>
+  </section>
+
+  {% endblock %}
