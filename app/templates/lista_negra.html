@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Lista Negra | Candidatos al Poder Judicial{% endblock %}
+
+{% block content %}
+
+<section class="space-y-10 max-w-4xl mx-auto">
+  <header class="text-center space-y-2 mb-6">
+    <h1 class="text-4xl font-bold text-gray-800">
+        <span class="text-[#0B0C0C]">🛑 Lista Negra: </span>Aspirantes a juzgadores impugnados por abuso, narco, amenazas.</h1>
+    <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+      
+    </p>
+    <div class="w-24 h-1 bg-[#0B0C0C] mx-auto rounded-full"></div>
+  </header>
+
+  <article class="max-w-none text-justify text-gray-800 text-base leading-relaxed space-y-4">
+    <p>
+      El 1 de junio votaremos por jueces y magistrados. Sin embargo, algunas candidaturas han sido impugnadas por tener investigaciones abiertas o vínculos con el crimen organizado.
+    </p>
+    <p>
+      Aunque estarán en la boleta, estos perfiles no cumplen con el requisito de buena reputación. Aquí te presentamos quiénes son y por qué deberías evitarlos.
+    </p>
+  
+    <h2 class="text-xl font-semibold mt-4 mb-2 text-[#0B0C0C]">Candidatos a evitar</h2>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Mujeres</h3>
+    <ul class="space-y-3">
+      {% for c in candidatos_lista_negra["mujeres"] %}
+      <li class="border-l-4 border-[#0B0C0C] pl-3">
+        <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
+        <p class="text-sm text-gray-600">{{ c.razones }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">Hombres</h3>
+    <ul class="space-y-3">
+      {% for c in candidatos_lista_negra["hombres"] %}
+      <li class="border-l-4 border-[#0B0C0C] pl-3">
+        <p class="text-base text-gray-800 font-semibold">{{ c.numero }} {{ c.nombre }}</p>
+        <p class="text-sm text-gray-600">{{ c.razones }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+  <div class="text-center mt-8">
+    <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
+  </div>
+</section>
+
+{% endblock %}

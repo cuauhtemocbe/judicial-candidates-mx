@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}Boleta Azul | Candidatos al Poder Judicial{% endblock %}
+
+{% block content %}
+
+<section class="space-y-10 max-w-4xl mx-auto">
+    <header class="text-center space-y-2 mb-6">
+        <h1 class="text-4xl font-bold text-gray-800">
+            <span class="text-blue-700">Boleta Azul: </span>Candidatos al Sala Superior del Tribunal Electoral
+        </h1>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            Comparativo de candidatas y candidatos de Viri Ríos
+        </p>
+        <div class="w-24 h-1 bg-blue-700 mx-auto rounded-full"></div>
+    </header>
+
+    <article class="max-w-none text-justify text-gray-800 text-base leading-relaxed space-y-4">
+        <p>
+            Es la Boleta para elegir a una magistrada y a un magistrado que integrarán la Sala Superior del Tribunal
+            Electoral (TEPJF), la cual es la máxima autoridad en materia electoral en México. También valida la elección
+            presidencial y califica su legalidad.
+        </p>
+
+        <h2 class="text-xl font-semibold mt-4 mb-2">Mejores propuestas</h2>
+
+        <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-2">Mujeres</h3>
+        <ul class="space-y-3">
+            {% for c in candidatos_boleta_azul["mujeres"] %}
+            <li class="border-l-4 border-blue-700 pl-3">
+                <button class="text-left w-full flex items-center justify-between focus:outline-none group" onclick="
+        document.getElementById('razones-mujer-{{ loop.index }}').classList.toggle('hidden');
+        document.getElementById('icon-mujer-{{ loop.index }}').classList.toggle('rotate-180');
+      ">
+                    <div>
+                        <span class="text-base font-semibold text-gray-900">{{ c.numero }}</span>
+                        <span class="text-base font-semibold text-gray-700"> {{ c.nombre }}</span>
+                    </div>
+                    <svg id="icon-mujer-{{ loop.index }}"
+                        class="w-4 h-4 text-gray-500 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <p id="razones-mujer-{{ loop.index }}" class="text-sm text-gray-600 hidden mt-1">
+                    {{ c.razones }}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">Hombres</h3>
+        <ul class="space-y-3">
+            {% for c in candidatos_boleta_azul["hombres"] %}
+            <li class="border-l-4 border-blue-700 pl-3">
+                <button class="text-left w-full flex items-center justify-between focus:outline-none group" onclick="
+        document.getElementById('razones-hombre-{{ loop.index }}').classList.toggle('hidden');
+        document.getElementById('icon-hombre-{{ loop.index }}').classList.toggle('rotate-180');
+      ">
+                    <div>
+                        <span class="text-base font-semibold text-gray-900">{{ c.numero }}</span>
+                        <span class="text-base font-semibold text-gray-700"> {{ c.nombre }}</span>
+                    </div>
+                    <svg id="icon-hombre-{{ loop.index }}"
+                        class="w-4 h-4 text-gray-500 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <p id="razones-hombre-{{ loop.index }}" class="text-sm text-gray-600 hidden mt-1">
+                    {{ c.razones }}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+        <h2 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Metodología de evaluación</h2>
+
+        <p>
+            Análisis realizado por la analista <strong>Viridiana Ríos</strong> con base en criterios técnicos y
+            ciudadanos.
+            La calificación de cada candidatura en la <strong>Boleta Azul</strong> se basa en tres criterios:
+        </p>
+
+        <ul class="list-disc list-inside pl-4 space-y-2">
+            <li>
+                <strong>Experiencia:</strong> Trayectoria profesional y académica afín al CJF. Escala del 1 al 5. Sin
+                experiencia, se asigna "NA".
+            </li>
+            <li>
+                <strong>Independencia:</strong> Vínculos con partidos o figuras del poder. Si los hay, se asigna "NA".
+            </li>
+            <li>
+                <strong>Viabilidad:</strong> Propuestas fuera del CJF restan 0.5. Las inviables se marcan en amarillo.
+            </li>
+        </ul>
+
+        <p>
+            El objetivo es destacar perfiles con autonomía, experiencia y propuestas útiles para la justicia en México.
+        </p>
+    </article>
+
+    <div class="text-center mt-8">
+        <a href="{{ url_for('main.index') }}" class="text-blue-600 hover:underline text-sm">← Volver al inicio</a>
+    </div>
+</section>
+
+{% endblock %}
