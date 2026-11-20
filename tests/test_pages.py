@@ -30,3 +30,10 @@ def test_home_page_no_longer_announces_an_upcoming_vote(client):
 
     assert "próximo domingo" not in page
     assert "La votación se realizó el domingo 1 de junio de 2025." in page
+
+
+def test_blacklist_page_speaks_of_the_vote_in_the_past(client):
+    page = get_page(client, "/lista-negra")
+
+    assert "votaremos" not in page
+    assert "se votó por jueces y magistrados" in page
