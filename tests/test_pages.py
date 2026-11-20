@@ -23,3 +23,10 @@ def get_page(client, path):
 )
 def test_every_page_carries_the_archive_notice(client, path):
     assert ARCHIVE_NOTICE in get_page(client, path)
+
+
+def test_home_page_no_longer_announces_an_upcoming_vote(client):
+    page = get_page(client, "/")
+
+    assert "próximo domingo" not in page
+    assert "La votación se realizó el domingo 1 de junio de 2025." in page
