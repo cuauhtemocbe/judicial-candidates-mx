@@ -1,0 +1,39 @@
+import pytest
+
+from app import create_app
+
+# One literal, so the notice stays greppable and matches the issue verbatim.
+ARCHIVE_NOTICE = "Archivo: este análisis se publicó antes de la elección del 1 de junio de 2025."  # noqa: E501
+
+
+@pytest.fixture
+def client():
+    return create_app().test_client()
+
+
+def get_page(client, path):
+    response = client.get(path)
+    assert response.status_code == 200
+    return response.get_data(as_text=True)
+
+
+@pytest.mark.parametrize(
+    "path",
+    ["/", "/boleta-verde", "/boleta-azul", "/lista-negra", "/acerca"],
+)
+def test_every_page_carries_the_archive_notice(client, path):
+    assert ARCHIVE_NOTICE in get_page(client, path)
+
+
+def test_home_page_no_longer_announces_an_upcoming_vote(client):
+    page = get_page(client, "/")
+
+    assert "próximo domingo" not in page
+    assert "La votación se realizó el domingo 1 de junio de 2025." in page
+
+
+def test_blacklist_page_speaks_of_the_vote_in_the_past(client):
+    page = get_page(client, "/lista-negra")
+
+    assert "votaremos" not in page
+    assert "se votó por jueces y magistrados" in page
